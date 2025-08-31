@@ -18,7 +18,7 @@
       width: 200px;
       height: 200px;
       object-fit: cover;
-      border-radius: 50%; /* делаем круглым */
+      border-radius: 50%;
       box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
     .item h2 {
@@ -32,6 +32,7 @@
     .buy-btn {
       display: inline-block;
       padding: 10px 20px;
+      margin-top: 10px;
       background: yellow;
       color: black;
       font-weight: bold;
@@ -39,6 +40,8 @@
       text-decoration: none;
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
       cursor: pointer;
+      border: none;
+      font-size: 16px;
     }
     .buy-btn:hover {
       background: orange;
@@ -78,13 +81,13 @@
 
   <script>
     function buy(amount, description) {
-      const publicKey = "sandbox_i40989243867"; // твій LiqPay Public Key
+      const publicKey = "sandbox_i40989243867"; // замени на свой Public Key
       const currency = "UAH";
-
-      // Генерим ссылку на оплату
+      
+      // генерируем ссылку для LiqPay
       const url = `https://www.liqpay.ua/api/3/checkout?public_key=${publicKey}&amount=${amount}&currency=${currency}&description=${encodeURIComponent(description)}`;
-
-      // Перенаправляем юзера
+      
+      // перебрасываем пользователя
       window.location.href = url;
     }
   </script>
