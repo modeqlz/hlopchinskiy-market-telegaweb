@@ -81,13 +81,8 @@
 
   <script>
     function buy(amount, description) {
-      const publicKey = "sandbox_i40989243867"; // замени на свой Public Key
-      const currency = "UAH";
-      
-      // генерируем ссылку для LiqPay
-      const url = `https://www.liqpay.ua/api/3/checkout?public_key=${publicKey}&amount=${amount}&currency=${currency}&description=${encodeURIComponent(description)}`;
-      
-      // перебрасываем пользователя
+      const baseUrl = "https://new.donatepay.ru/@1415723";
+      const url = `${baseUrl}?sum=${amount}&msg=${encodeURIComponent(description)}`;
       window.location.href = url;
     }
   </script>
