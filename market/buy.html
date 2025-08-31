@@ -27,7 +27,21 @@
     .price {
       font-size: 22px;
       font-weight: bold;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
+    }
+    .buy-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: yellow;
+      color: black;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+    .buy-btn:hover {
+      background: orange;
     }
     .back-btn {
       display: inline-block;
@@ -50,14 +64,29 @@
     <h2>УКРАЇНСЬКЕ САЛО</h2>
     <img src="images/salo.jpg" alt="Сало">
     <div class="price">5 ГРИВЕНЬ!</div>
+    <button class="buy-btn" onclick="buy(5, 'Українське сало')">Купити</button>
   </div>
 
   <div class="item">
     <h2>РОСІЙСЬКЕ НЕМОВЛЯ</h2>
     <img src="images/people.png" alt="Nemovlya">
     <div class="price">БЕЗКОШТОВНО!</div>
+    <button class="buy-btn" onclick="buy(0, 'Російське немовля')">Отримати</button>
   </div>
 
   <a href="index.html" class="back-btn">⬅ Назад</a>
+
+  <script>
+    function buy(amount, description) {
+      const publicKey = "sandbox_i40989243867"; // твій LiqPay Public Key
+      const currency = "UAH";
+
+      // Генерим ссылку на оплату
+      const url = `https://www.liqpay.ua/api/3/checkout?public_key=${publicKey}&amount=${amount}&currency=${currency}&description=${encodeURIComponent(description)}`;
+
+      // Перенаправляем юзера
+      window.location.href = url;
+    }
+  </script>
 </body>
 </html>
